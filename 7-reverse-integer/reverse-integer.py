@@ -1,10 +1,14 @@
 class Solution:
     def reverse(self, x: int) -> int:
-        sign = [1, -1][x < 0]
-        rev, x = 0, abs(x)
-        while x:
-            x, mod = divmod(x, 10)
-            rev = rev * 10 + mod
-            if rev > 2**31 - 1:
+        a= str(x)
+        if a[0] == "-":
+            a = int("-"+a[:0:-1]) 
+            if a > ((2**31)-1) or a < (-2**31):
                 return 0
-        return sign * rev
+            else:
+                return a
+        else:
+            a= int(a[::-1])
+            if a > ((2**31)-1) or a < (-2**31):
+                return 0
+            return a        
